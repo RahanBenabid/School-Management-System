@@ -2,13 +2,16 @@
 import express from "express";
 import { sequelize, connectDB } from "./config/database.js";
 import userRoutes from "./routes/userRoutes.js";
+import classRoutes from "./routes/classRoutes.js";
 
 const app = express();
 
 app.use(express.json());
 app.use("/api/users", userRoutes);
+app.use("/api/classes", classRoutes);
 
-sequelize.sync({ alter: true })
+sequelize
+  .sync({ alter: true })
   .then(() => {
     console.log("Tables created.");
   })

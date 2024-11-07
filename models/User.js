@@ -2,7 +2,7 @@
 import { DataTypes } from "sequelize";
 
 const User = (sequelize) => {
-  return sequelize.define("users", {
+  return sequelize.define("Users", {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -23,7 +23,7 @@ const User = (sequelize) => {
       type: DataTypes.ENUM("teacher", "student", "admin", "parent"),
       allowNull: false,
       defaultValue: "student",
-    }
+    },
   });
 };
 
