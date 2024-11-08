@@ -20,6 +20,7 @@ db.Attendance = AttendanceModel(sequelize, Sequelize.DataTypes);
 db.User.hasMany(db.Class, { foreignKey: "teacherId" });
 db.Class.belongsTo(db.User, { foreignKey: "teacherId" });
 
+// will add later
 // db.Subject.hasMany(db.Class, { foreignKey: "subjectId" });
 // db.Class.belongsTo(db.Subject, { foreignKey: "subjectId" });
 

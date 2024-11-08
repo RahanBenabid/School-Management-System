@@ -1,4 +1,3 @@
-// models/User.js
 import { DataTypes } from "sequelize";
 
 const User = (sequelize) => {

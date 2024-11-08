@@ -1,4 +1,3 @@
-// config/database.js
 import { Sequelize } from "sequelize";
 
 export const sequelize = new Sequelize("school_management", "root", "", {
@@ -9,7 +8,7 @@ export const sequelize = new Sequelize("school_management", "root", "", {
     if (msg.includes("ERROR")) {
       console.error(msg);
     }
-  }
+  },
 });
 
 export const connectDB = async () => {

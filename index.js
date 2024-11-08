@@ -1,4 +1,3 @@
-// app.js
 import express from "express";
 import { sequelize, connectDB } from "./config/database.js";
 import userRoutes from "./routes/userRoutes.js";
