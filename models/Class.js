@@ -15,8 +15,8 @@ const Class = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: User(sequelize), // Referencing the User model
-        key: "id", // Foreign key on User's id
+        model: User(sequelize), // reference the User model
+        key: "id", // foreign key for the User's id
       },
       onDelete: "RESTRICT", // to not be able to delete a user
     },
