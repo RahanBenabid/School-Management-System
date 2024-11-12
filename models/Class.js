@@ -3,7 +3,7 @@ import User from "./User.js";
 
 const Class = (sequelize) => {
   const ClassModel = sequelize.define("Class", {
-    className: {
+    classNumber: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -19,6 +19,15 @@ const Class = (sequelize) => {
         key: "id", // foreign key for the User's id
       },
       onDelete: "RESTRICT", // to not be able to delete a user
+    },
+    subjectId: { // Foreign key linking to Subject model
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Subject(sequelize), // Reference to the Subject model
+        key: "id",
+      },
+      onDelete: "CASCADE",
     },
   });
 

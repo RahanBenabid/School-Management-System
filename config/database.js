@@ -3,7 +3,7 @@ import { Sequelize } from "sequelize";
 export const sequelize = new Sequelize("school_management", "root", "", {
   host: "localhost",
   dialect: "mysql",
-  // logging: false, // diable the annoying stuff in the console
+  // logging: false, // disable the annoying stuff in the console
   logging: (msg) => {
     if (msg.includes("ERROR")) {
       console.error(msg);
