@@ -1,9 +1,10 @@
 import { DataTypes } from "sequelize";
 import User from "./User.js";
+import Subject from "./Subject.js"
 
 const Class = (sequelize) => {
   const ClassModel = sequelize.define("Class", {
-    classNumber: {
+    className: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -19,7 +19,7 @@ const Grade = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: Class(sequelize),
+          model: Subject(sequelize),
           key: "id",
         },
         onDelete: "RESTRICT",

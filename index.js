@@ -4,6 +4,7 @@ import userRoutes from "./routes/userRoutes.js";
 import classRoutes from "./routes/classRoutes.js";
 import attendanceRoutes from "./routes/attendanceRoutes.js";
 import gradeRoutes from "./routes/gradeRoutes.js";
+import subjectRoutes from "./routes/subjectRoutes.js";
 
 const app = express();
 const PORT = 3000;
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/users", userRoutes);
+app.use("/api/subjects", subjectRoutes);
 app.use("/api/classes", classRoutes);
 app.use("/api/attendances", attendanceRoutes);
 app.use("/api/grades", gradeRoutes);
