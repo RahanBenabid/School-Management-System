@@ -1,7 +1,7 @@
 # School-Management-System
 
 ## Tables
-Contains four tables for now:
+Contains these tables for now:
 - User table (student, teacher, admin, parent)
 - Class table
 - Subject table
@@ -20,12 +20,10 @@ curl -X POST http://localhost:3000/api/users \
 -H "Content-Type: application/json" \
 -d '{"firstName":"johnny","lastName":"silverhand","email":"lol@example.com","password":"password123"}'
 
-
 # create class
 curl -X POST http://localhost:3000/api/classes \
 -H "Content-Type: application/json" \
 -d '{"teacherId":2,"className":"maths 101","classDescription":"very cool","subjectId":1}'
-
 
 # create attendance
 curl -X POST http://localhost:3000/api/attendances \
