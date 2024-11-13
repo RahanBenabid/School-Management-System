@@ -48,3 +48,4 @@ coverage/
 *.spec.js
 tasks.json
 .Ulysses-Group.plist
+.Ulysses-Settings.plist
