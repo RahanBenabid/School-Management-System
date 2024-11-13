@@ -66,3 +66,8 @@ User ↔ Grade
 Subject ↔ Grade
 - A Subject can have many Grade entries.
 - Each Grade belongs to one Subject.
+
+## Security
+To enhance user authentication, passwords are securely hashed using bcrypt before being stored in the database. This ensures that even if the database is compromised, user passwords remain protected.
+Implemented user authentication. Users can sign up and log in, with passwords securely hashed and JWT tokens issued for authentication.
+

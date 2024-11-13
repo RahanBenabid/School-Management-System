@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
 
 const User = (sequelize) => {
-  return sequelize.define("User", {
+  const model = sequelize.define("User", {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -14,7 +14,7 @@ const User = (sequelize) => {
     email: {
       type: DataTypes.STRING,
       unique: true,
-      allowNull: false, // changed it to implement proper login
+      allowNull: false,
       validate: {
         isEmail: true,
       },
@@ -29,32 +29,27 @@ const User = (sequelize) => {
       defaultValue: "student",
     },
   });
+  
+  // hash password on creation
+  model.beforeCreate(async (user) => {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+  });
+  
+  // hash password when updating
+  model.beforeUpdate(async (user) => {
+    if (user.changed("password")) {
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(user.password, salt);
+    }
+  });
+  
+  // verify password
+  model.prototype.validPassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+  };
+  
+  return model;
 };
-
-// hash password on creation
-User.beforeCreate(async (user) => {
-  const salt = await bcrypt.genSaltSync();
-  user.password = bcrypt.hashSync(user.password, salt);
-});
-
-// hash password when updating
-User.beforeUpdate(async (user) => {
-  if (user.changed("password")) {
-    const salt = await bcrypt.genSaltSync();
-    user.password = bcrypt.hashSync(user.password, salt);
-  }
-});
-
-// verify password
-User.prototype.validPassword = async function (password) {
-  return await bcrypt.compareSync(password, this.password);
-}
-
-/* use case:
-const isMatch = userInstance.validPassword('inputpassword');
-if (isMatch) // do something
-else // do something else
-*/
-
 
 export default User;
