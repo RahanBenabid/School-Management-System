@@ -47,5 +47,9 @@ coverage/
 *.test.js
 *.spec.js
 tasks.json
+
+# Other files
 .Ulysses-Group.plist
 .Ulysses-Settings.plist
+School Management API.paw
+School Management.graffle
