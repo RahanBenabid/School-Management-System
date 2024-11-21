@@ -49,6 +49,9 @@ curl -X POST http://localhost:3000/auth/sign-in \
 curl -X POST http://localhost:3000/auth/sign-up \
 -H "Content-Type: application/json; charset=utf-8" \
 -d '{"firstName":"nadime","lastName":"something","email":"rahannadime@gmail.com","password":"0000","role":"teacher"}'
+
+# get a user and his grades by name
+curl -X GET "http://localhost:3000/api/grades?name=john"
 ```
 
 ##  Database Relationships
@@ -78,5 +81,6 @@ Subject ↔ Grade
 - Each Grade belongs to one Subject.
 
 ## Security
-To enhance user authentication, passwords are securely hashed using bcrypt before being stored in the database. This ensures that even if the database is compromised, user passwords remain protected.
-Implemented user authentication. Users can sign up and log in, with passwords securely hashed and JWT tokens issued for authentication.
+Securely hash passwords using bcrypt before storing them in the database to protect user passwords even if the database is compromised.
+
+Implement user authentication with sign-up and login, password hashing, and JWT token issuance.
