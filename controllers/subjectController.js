@@ -7,6 +7,6 @@ export const createSubject = async (req, res) => {
 		const subject = await db.Subject.create(req.body);
 		res.status(201).json(subject);
 	} catch (error) {
-		res.status(400).json({ message: error.message })
+		res.status(400).json({ message: error.message });
 	}
 }

@@ -6,6 +6,7 @@ import attendanceRoutes from "./routes/attendanceRoutes.js";
 import gradeRoutes from "./routes/gradeRoutes.js";
 import subjectRoutes from "./routes/subjectRoutes.js";
 import authRoutes from "./routes/auth.js";
+import searchRoutes from "./routes/searchRoutes.js";
 
 const app = express();
 const PORT = 3000;
@@ -19,7 +20,11 @@ app.use("/api/subjects", subjectRoutes);
 app.use("/api/classes", classRoutes);
 app.use("/api/attendances", attendanceRoutes);
 app.use("/api/grades", gradeRoutes);
+app.use("/api/search", searchRoutes);
+
+// protected
 app.use("/auth", authRoutes);
+
 
 // db syncronization + server setup
 const startServer = async () => {
