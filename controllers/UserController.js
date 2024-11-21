@@ -10,3 +10,13 @@ export const createUser = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+export const getUsers = async (req, res) => {
+  try {
+    const users = await db.User.findAll();
+    res.status(200).json(users);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "error when getting users" });
+  }
+}
