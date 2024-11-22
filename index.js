@@ -5,7 +5,7 @@ import classRoutes from "./routes/classRoutes.js";
 import attendanceRoutes from "./routes/attendanceRoutes.js";
 import gradeRoutes from "./routes/gradeRoutes.js";
 import subjectRoutes from "./routes/subjectRoutes.js";
-import authRoutes from "./routes/auth.js";
+import authRoutes from "./routes/authRoutes.js";
 import searchRoutes from "./routes/searchRoutes.js";
 
 const app = express();
@@ -21,8 +21,6 @@ app.use("/api/classes", classRoutes);
 app.use("/api/attendances", attendanceRoutes);
 app.use("/api/grades", gradeRoutes);
 app.use("/api/search", searchRoutes);
-
-// protected
 app.use("/auth", authRoutes);
 
 
