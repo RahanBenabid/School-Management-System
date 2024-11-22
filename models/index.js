@@ -1,10 +1,19 @@
-import Sequelize from "sequelize";
-import { sequelize } from "../config/database.js";
+import { Sequelize } from "sequelize";
 import UserModel from "./User.js";
 import ClassModel from "./Class.js";
 import SubjectModel from "./Subject.js";
 import AttendanceModel from "./Attendance.js";
 import GradeModel from "./Grade.js";
+
+const sequelize = new Sequelize("school_management", "root", "", {
+	host: "localhost",
+	dialect: "mysql",
+	logging: (msg) => {
+		if (msg.includes("ERROR")) {
+			console.error(msg);
+		}
+	},
+});
 
 // import required dependencies from sequelize and local files
 const db = {};
@@ -48,3 +57,4 @@ db.Grade.belongsTo(db.Subject, { foreignKey: "subjectId" });
 
 
 export default db;
+export { sequelize };

@@ -1,20 +1,11 @@
-import { Sequelize } from "sequelize";
-
-export const sequelize = new Sequelize("school_management", "root", "", {
-  host: "localhost",
-  dialect: "mysql",
-  // logging: false, // disable the annoying stuff in the console
-  logging: (msg) => {
-    if (msg.includes("ERROR")) {
-      console.error(msg);
-    }
-  },
-});
+import { sequelize } from "../models/index.js";
+import { seedAdminUser } from "./seedAdmin.js";
 
 export const connectDB = async () => {
   try {
     await sequelize.authenticate();
     console.log("Database connection established");
+    await seedAdminUser();
   } catch (err) {
     console.error("Unable to connect to the database:", err);
   }

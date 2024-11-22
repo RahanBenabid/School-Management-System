@@ -1,5 +1,6 @@
 import express from "express";
-import { sequelize, connectDB } from "./config/database.js";
+import { connectDB } from "./config/database.js";
+import { sequelize } from "./models/index.js"
 import userRoutes from "./routes/userRoutes.js";
 import classRoutes from "./routes/classRoutes.js";
 import attendanceRoutes from "./routes/attendanceRoutes.js";

@@ -23,20 +23,13 @@ const registerUser = async (req, res) => {
 			role
 		});
 		
-		const token = jwt.sign(
-			{ id: createdUser.id, email: createdUser.email },
-			process.env.TOKEN_SECRET, 
-			{ expiresIn: "1h" }
-		);
-		
 		// we exclude pw
 		return res.status(201).json({
 			id: createdUser.id,
 			firstName: createdUser.firstName,
 			lastName: createdUser.lastName,
 			email: createdUser.email,
-			role: createdUser.role,
-			token
+			role: createdUser.role
 		});
 		
 	} catch (error) {
@@ -52,8 +45,12 @@ const signInUser = async (req, res) => {
 		const user = await db.User.findOne({
 			where: {email}
 		});
-		if(!user) return res.status(404).json("Email not found");
-
+		if (!user) return res.status(404).json("Email not found");
+		
+		
+		if (user.role !== "admin") {
+			return res.status(403).json({ message: "Access restricted to Admin users only" })
+		}
 		
 		// verify password
 		const isMatch = await user.validPassword(password);
